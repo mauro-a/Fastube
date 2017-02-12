@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Navbar from './components/navbar';
+import Navbar from './components/navbarInstance';
 
 class App extends React.Component {
     constructor(props) {

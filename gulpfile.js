@@ -3,14 +3,19 @@ var babel = require('gulp-babel');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var connect = require('gulp-connect');
+var react = require('gulp-react');
+var browserify = require('gulp-browserify');
+var notify = require('gulp-notify');
+
 const PATH = './src/js/*.js';
 
 gulp.task('build', function() {
     return gulp.src(PATH)
-		.pipe(babel())
+		.pipe(browserify({transform: ['babelify']}))
 		.pipe(uglify())
 		.pipe(concat('compiled.js'))
-		.pipe(gulp.dest('dist'));
+		.pipe(gulp.dest('dist'))
+		.pipe(notify({ title: "SUCCESS", message: "OPERATION COMPLETE", sound: "Glass" }))
 });
 
 gulp.task('connect', function() {
@@ -21,6 +26,10 @@ gulp.task('connect', function() {
 });
 
 gulp.watch(PATH, function() {
+	gulp.run('build');
+});
+
+gulp.watch('./src/js/components/*.js', function() {
 	gulp.run('build');
 });
 

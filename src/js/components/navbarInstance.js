@@ -16,7 +16,7 @@ const navbarInstance = () => {
                 <Navbar.Toggle />
             </Navbar.Header>
             <Navbar.Collapse>
-                <Nav>
+                <Nav pullLeft>
                     <NavItem eventKey={1} href="#">
                         <input type="search" placeholder="Your search ..." />
                     </NavItem>

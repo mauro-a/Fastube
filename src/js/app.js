@@ -13,7 +13,7 @@ class App extends React.Component {
             videos: []
         }
         var self = this;
-        YTSearch({'term': 'ps4', 'key': API_KEY }, function(data) {
+        YTSearch({'term': 'south park', 'key': API_KEY }, function(data) {
             self.setState({
                 videos: data
             });

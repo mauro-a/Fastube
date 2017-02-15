@@ -19,6 +19,7 @@
     "gulp-notify": "^3.0.0",
     "gulp-react": "^3.1.0",
     "gulp-uglify": "^2.0.1",
+    "react-tooltip": "^3.2.6",
     "uid": "0.0.2"
   },
   "dependencies": {

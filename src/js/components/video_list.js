@@ -12,16 +12,16 @@ class VideoList extends React.Component {
         this.openModal = this.openModal.bind(this);
         this.close = this.close.bind(this);
         this.state = {
-            showModal: false
+            video: null
         }
     }
 
     openModal(video) {
-        console.log(video);
-        this.setState({ showModal: true });
+        this.setState({ video: video });
     }
+
     close() {
-        this.setState({ showModal: false });
+        this.setState({ video: null });
     }
 
     render() {
@@ -33,26 +33,27 @@ class VideoList extends React.Component {
                     alt={video.snippet.description}
                     key={uid()}
                 >
-                    <h3>{video.title}</h3>
+                    <h3>{video.snippet.title}</h3>
                     <p>{video.snippet.description}</p>
                     <hr />
                     <i>Date: {video.snippet.publishedAt}</i>
-                    <VideoView show={this.state.showModal} video={video} close={this.close} />
                 </Thumbnail>
             </Col>
         );
         return (
-            <Grid>
-                <Row>
-                    {videoItems}
-                </Row>
-            </Grid>
+            <div>
+                <Grid>
+                    <Row>
+                        {videoItems}
+                    </Row>
+                </Grid>
+                <VideoView show={this.state.video !== null} 
+                    video={this.state.video} 
+                    close={this.close} 
+                />              
+            </div>
         );
     }
 }
 
 export default VideoList;
-
-
-
-

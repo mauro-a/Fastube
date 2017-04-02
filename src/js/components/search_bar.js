@@ -38,7 +38,8 @@ class SearchBar extends React.Component {
 	render() {
 		return (
 			<form>
-				<input type="text" placeholder="Your search" 
+				<input type="text" placeholder="Your search"
+					id="inputSearch" 
 					value={this.state.term}
 					onChange={evt => this.onInputChange(evt.target.value, this.state.filterBy)} /> 
 				<label htmlFor="searchBy">Search by</label>

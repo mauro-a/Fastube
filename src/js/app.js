@@ -4,6 +4,8 @@ import Navbar from './components/navbarInstance';
 import VideoList from './components/video_list';
 import YTSearch from 'youtube-api-search';
 import SearchBar from './components/search_bar';
+import ValidateJSON from './components/validateJSON';
+
 const API_KEY = 'AIzaSyCmHD9ETQ7GQ4TQbQvG6MuD5g7Wb_w7HOE';
 
 class App extends React.Component {
@@ -37,6 +39,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
+                <ValidateJSON />
                 <SearchBar onSearchPerformed={(term, filter) => this.filterVideosByTerm(term, filter) } />
                 <VideoList videos={this.state.videos} />
             </div>

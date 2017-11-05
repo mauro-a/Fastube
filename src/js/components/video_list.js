@@ -4,7 +4,8 @@ import Grid from 'react-bootstrap/lib/Grid';
 import Thumbnail from 'react-bootstrap/lib/Thumbnail';
 import Col from 'react-bootstrap/lib/Col';
 import Row from 'react-bootstrap/lib/Row';
-import VideoView from './video_view';
+import Modal from 'react-bootstrap/lib/Modal';
+import Button from 'react-bootstrap/lib/Button';
 
 class VideoList extends React.Component {
     constructor(props) {
@@ -16,8 +17,7 @@ class VideoList extends React.Component {
         }
     }
 
-    openModal(video) {
-        console.log(video);
+    openModal() {
         this.setState({ showModal: true });
     }
     close() {
@@ -27,7 +27,7 @@ class VideoList extends React.Component {
     render() {
         const videoItems = this.props.videos.map(video =>
             <Col xs={6} md={4}>
-                <Thumbnail onClick={() => this.openModal(video)}
+                <Thumbnail onClick={() => console.log(video.snippet.description)}
                     className="thumbnail"
                     src={video.snippet.thumbnails.default.url}
                     alt={video.snippet.description}
@@ -37,7 +37,15 @@ class VideoList extends React.Component {
                     <p>{video.snippet.description}</p>
                     <hr />
                     <i>Date: {video.snippet.publishedAt}</i>
-                    <VideoView show={this.state.showModal} video={video} close={this.close} />
+                    <Modal show={this.state.showModal} onHide={this.close}>
+                        <Modal.Header>
+                            <Modal.Title>Title</Modal.Title>
+                        </Modal.Header>
+
+                        <Modal.Body>
+                            {video.snippet.description}
+                        </Modal.Body>
+                    </Modal>
                 </Thumbnail>
             </Col>
         );
